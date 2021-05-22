@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-          "strict": true
+          "strict": false
         }
       },
       "root": "",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MovieManiac",
+            "outputPath": "docs/`",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -124,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "MovieManiac"
+  "defaultProject": "MovieManiac",
+  "cli": {
+    "analytics": "a3d90e4e-61ea-4e1a-9dae-d6b57f50d19b"
+  }
 }
