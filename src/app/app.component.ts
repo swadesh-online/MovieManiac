@@ -8,7 +8,7 @@ import { movie } from './models/movie';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private readonly sourceurl = " http://www.omdbapi.com/?";
+  private readonly sourceurl = " https://www.omdbapi.com/?";
   apikey: string;
   query: string;
   showTable: boolean;
