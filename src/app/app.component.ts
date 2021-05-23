@@ -72,7 +72,7 @@ export class AppComponent {
       }
       )
     } else {
-      this.errorMessage = "Let's try searching something. Then we can definitely download it. "
+      this.errorMessage = "We love to share. But first let's try searching. Then we can definitely share it. "
     }
   }
 
