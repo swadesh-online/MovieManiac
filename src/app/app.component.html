@@ -8,6 +8,7 @@
     </nav>
 
     <form>
+
         <div class="form-group">
             <label for="movieTitle" style="color: white;">Movie Title :</label>
             <input type="text" name="title" class="form-control" id="movie" aria-describedby="movieHelp"
@@ -28,7 +29,7 @@
                 Reset
             </button>
             &nbsp;
-            <button *ngIf="showPoster" id="btn"> <a href="{{movieData.Poster}}">
+            <button *ngIf="showPoster && movieData.Poster!='N/A'" id="btn"> <a href="{{movieData.Poster}}">
                     View Poster(Max Resolution)
                 </a></button>
 
@@ -64,7 +65,11 @@
                 <tr>
                     <th scope="row">2</th>
                     <td>Poster</td>
-                    <td><img src="{{movieData.Poster}}" alt="{{movieData.Title}}" width="200px" height="300px"></td>
+                    <td *ngIf="movieData.Poster!='N/A'"><img src="{{movieData.Poster}}" alt="{{movieData.Title}}"
+                            width="200px" height="300px"></td>
+                    <td *ngIf="movieData.Poster=='N/A'">
+                        Not Available
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
