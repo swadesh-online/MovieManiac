@@ -32,7 +32,9 @@
               "src/assets/css/bootstrap.css",
               "src/assets/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/html2canvas/dist/html2canvas.min.js"
+            ]
           },
           "configurations": {
             "production": {

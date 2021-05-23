@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { movie } from './models/movie';
-
+declare let html2canvas: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +15,7 @@ export class AppComponent {
   movieTitle: string;
   movieData!: movie;
   errorMessage: string;
+  capturedImage: any;
   constructor(private http: HttpClient) {
     this.showTable = false;
     this.movieTitle = '';
@@ -42,7 +43,7 @@ export class AppComponent {
             this.errorMessage = "I am sorry . I couldn't find your movie. I just hope you give me one more chance."
           }
         },
-        error: error => {
+        error: _error => {
           this.errorMessage = "It's not you. It's us. Hoping things will get better after sometime."
         }
       })
@@ -56,4 +57,23 @@ export class AppComponent {
     this.showTable = false;
     this.movieTitle = '';
   }
+
+  pngDownload() {
+    this.errorMessage = '';
+    if (this.movieData) {
+      html2canvas(document.querySelector("#res")).then((_canvas: any) => {
+        this.capturedImage = _canvas.toDataURL();
+        var link = document.createElement('a');
+        link.href = _canvas.toDataURL("image/jpeg", "1");;
+        link.download = this.movieData.Title + ".png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      )
+    } else {
+      this.errorMessage = "Let's try searching something. Then we can definitely download it. "
+    }
+  }
+
 }

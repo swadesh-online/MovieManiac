@@ -40,3 +40,11 @@ form {
 .table td {
     text-align: center;
     } 
+    .table th {
+        text-align: center;
+        } 
+
+
+#download{
+    filter: invert(92%) sepia(42%) saturate(3967%) hue-rotate(340deg) brightness(102%) contrast(99%);
+}        

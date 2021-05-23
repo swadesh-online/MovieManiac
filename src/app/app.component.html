@@ -1,6 +1,9 @@
 <body>
     <nav class="navbar navbar-dark" id="navbar">
-        <a class="navbar-brand" id="navbartext" (click)="reset()">Movie Maniac</a>
+        <a class="navbar-brand" id="navbartext" (click)="pngDownload()">Movie Maniac</a>
+
+        <img id="download" src="./../assets/download.png" alt="save" (click)="pngDownload()" width="30" height="30"
+            style="margin-right : 2em">
     </nav>
 
     <form>
@@ -28,149 +31,152 @@
             {{errorMessage}}
         </div>
     </form>
+    <div id="res">
+        <table id="movieTable" class="table table-bordered table-dark"
+            *ngIf="movieData!=null && movieData!=undefined && showTable">
+            <thead>
+                <tr>
+                    <th>
+                        Sl No.
+                    </th>
+                    <th>
+                        Attributes
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Title</td>
+                    <td>{{movieData.Title}}</td>
+                </tr>
 
-    <table class="table table-bordered table-dark" *ngIf="movieData!=null && movieData!=undefined && showTable">
-        <thead>
-            <tr>
-                <th>
-                    Sl No.
-                </th>
-                <th>
-                    Attributes
-                </th>
-                <th>
-                    Description
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Title</td>
-                <td>{{movieData.Title}}</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Year</td>
-                <td>{{movieData.Year}}</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Rated</td>
-                <td>{{movieData.Rated}}</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>Released</td>
-                <td>{{movieData.Released}}</td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>Runtime</td>
-                <td>{{movieData.Runtime}}</td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td>Genre</td>
-                <td>{{movieData.Genre}}</td>
-            </tr>
-            <tr>
-                <th scope="row">7</th>
-                <td>Director</td>
-                <td>{{movieData.Director}}</td>
-            </tr>
-            <tr>
-                <th scope="row">8</th>
-                <td>Writer</td>
-                <td>{{movieData.Writer}}</td>
-            </tr>
-            <tr>
-                <th scope="row">9</th>
-                <td>Actors</td>
-                <td>{{movieData.Actors}}</td>
-            </tr>
-            <tr>
-                <th scope="row">10</th>
-                <td>Plot</td>
-                <td>{{movieData.Plot}}</td>
-            </tr>
-            <tr>
-                <th scope="row">11</th>
-                <td>Language</td>
-                <td>{{movieData.Language}}</td>
-            </tr>
-            <tr>
-                <th scope="row">12</th>
-                <td>Country</td>
-                <td>{{movieData.Country}}</td>
-            </tr>
-            <tr>
-                <th scope="row">13</th>
-                <td>Awards</td>
-                <td>{{movieData.Awards}}</td>
-            </tr>
-            <tr>
-                <th scope="row">14</th>
-                <td>Poster</td>
-                <td><img src="{{movieData.Poster}}" alt="{{movieData.Title}}" width="200px" height="300px"></td>
-            </tr>
-            <tr>
-                <th scope="row">15</th>
-                <td>Ratings</td>
-                <td>
-                    <div *ngFor="let rating of movieData.Ratings">
-                        {{rating.Source}} : {{rating.Value}}
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">16</th>
-                <td>Metascore</td>
-                <td>{{movieData.Metascore}}</td>
-            </tr>
-            <tr>
-                <th scope="row">17</th>
-                <td>imdbRating</td>
-                <td>{{movieData.imdbRating}}</td>
-            </tr>
-            <tr>
-                <th scope="row">18</th>
-                <td>imdbVotes</td>
-                <td>{{movieData.imdbVotes}}</td>
-            </tr>
-            <tr>
-                <th scope="row">19</th>
-                <td>imdbID</td>
-                <td>{{movieData.imdbID}}</td>
-            </tr>
-            <tr>
-                <th scope="row">20</th>
-                <td>Type</td>
-                <td>{{movieData.Type}}</td>
-            </tr>
-            <tr>
-                <th scope="row">21</th>
-                <td>DVD</td>
-                <td>{{movieData.DVD}}</td>
-            </tr>
-            <tr>
-                <th scope="row">22</th>
-                <td>BoxOffice</td>
-                <td>{{movieData.BoxOffice}}</td>
-            </tr>
-            <tr>
-                <th scope="row">23</th>
-                <td>Production</td>
-                <td>{{movieData.Production}}</td>
-            </tr>
-            <tr>
-                <th scope="row">24</th>
-                <td>Website</td>
-                <td>{{movieData.Website}}</td>
-            </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Poster</td>
+                    <td><img src="{{movieData.Poster}}" alt="{{movieData.Title}}" width="200px" height="300px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Rated</td>
+                    <td>{{movieData.Rated}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Released</td>
+                    <td>{{movieData.Released}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Runtime</td>
+                    <td>{{movieData.Runtime}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Genre</td>
+                    <td>{{movieData.Genre}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Director</td>
+                    <td>{{movieData.Director}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>Writer</td>
+                    <td>{{movieData.Writer}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>Actors</td>
+                    <td>{{movieData.Actors}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>Plot</td>
+                    <td>{{movieData.Plot}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>Language</td>
+                    <td>{{movieData.Language}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>Country</td>
+                    <td>{{movieData.Country}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">13</th>
+                    <td>Awards</td>
+                    <td>{{movieData.Awards}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">14</th>
+                    <td>Year</td>
+                    <td>{{movieData.Year}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">15</th>
+                    <td>Ratings</td>
+                    <td>
+                        <div *ngFor="let rating of movieData.Ratings">
+                            {{rating.Source}} : {{rating.Value}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">16</th>
+                    <td>Metascore</td>
+                    <td>{{movieData.Metascore}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">17</th>
+                    <td>imdbRating</td>
+                    <td>{{movieData.imdbRating}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">18</th>
+                    <td>imdbVotes</td>
+                    <td>{{movieData.imdbVotes}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">19</th>
+                    <td>imdbID</td>
+                    <td>{{movieData.imdbID}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">20</th>
+                    <td>Type</td>
+                    <td>{{movieData.Type}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">21</th>
+                    <td>DVD</td>
+                    <td>{{movieData.DVD}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">22</th>
+                    <td>BoxOffice</td>
+                    <td>{{movieData.BoxOffice}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">23</th>
+                    <td>Production</td>
+                    <td>{{movieData.Production}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">24</th>
+                    <td>Website</td>
+                    <td>{{movieData.Website}}</td>
+                </tr>
 
-        </tbody>
-    </table>
-    <div class="center" *ngIf="movieData!=null && movieData!=undefined && showTable">
-        Created with &#10084; by Swadesh </div>
+            </tbody>
+        </table>
+        <div class="center" id="credits" *ngIf="movieData!=null && movieData!=undefined && showTable">
+            Created with &#10084; by Swadesh </div>
+    </div>
 </body>
