@@ -8,7 +8,7 @@ import { movie } from './models/movie';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private readonly sourceurl = " https://www.omdbapi.com/?";
+  private readonly sourceurl = "https://www.omdbapi.com/?";
   apikey: string;
   query: string;
   showTable: boolean;
@@ -43,8 +43,7 @@ export class AppComponent {
           }
         },
         error: error => {
-          this.errorMessage = error.message;
-          console.error('There was an error!', error);
+          this.errorMessage = "It's not you. It's us. Hoping things will get better after sometime."
         }
       })
     } else {
