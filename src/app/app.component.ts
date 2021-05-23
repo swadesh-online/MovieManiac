@@ -12,12 +12,14 @@ export class AppComponent {
   apikey: string;
   query: string;
   showTable: boolean;
+  showPoster: boolean;
   movieTitle: string;
   movieData!: movie;
   errorMessage: string;
   capturedImage: any;
   constructor(private http: HttpClient) {
     this.showTable = false;
+    this.showPoster = false;
     this.movieTitle = '';
     this.query = this.sourceurl;
     this.apikey = "22c16c92";
@@ -37,6 +39,7 @@ export class AppComponent {
         next: data => {
           if (data.Response === "True") {
             this.showTable = true;
+            this.showPoster = true;
             this.movieData = data;
           }
           else {
@@ -53,6 +56,7 @@ export class AppComponent {
 
   }
   reset() {
+    this.showPoster = false;
     this.errorMessage = ''
     this.showTable = false;
     this.movieTitle = '';

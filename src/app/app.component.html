@@ -27,6 +27,12 @@
             <button id="btn" (click)="reset()">
                 Reset
             </button>
+            &nbsp;
+            <button *ngIf="showPoster" id="btn"> <a href="{{movieData.Poster}}">
+                    View Poster
+                </a></button>
+
+
         </div>
         <div id="error">
             {{errorMessage}}
